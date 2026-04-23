@@ -3,38 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloSpan | Gestión Inteligente de Componentes</title>
+    <title>VeloSpan | Component Lifecycle Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        carbon: '#121212',
+                        rosa: '#E73F90',
+                        cian: '#00B7EE',
+                        verde: '#2ECC71',
+                        naranja: '#F39C12',
+                        rojo: '#E74C3C',
+                    },
+                    fontFamily: {
+                        archivo: ['Archivo', 'sans-serif'],
+                        roboto: ['Roboto', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #121212; font-family: 'Roboto', sans-serif; }
+        h1, h2, h3 { font-family: 'Archivo', sans-serif; }
+        .text-gradient {
+            background: linear-gradient(90deg, #E73F90, #00B7EE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="text-white selection:bg-rosa selection:text-white">
 
-    <header class="py-20 px-6 text-center bg-gradient-to-b from-blue-600 to-slate-900">
-        <h1 class="text-5xl font-extrabold mb-4">VeloSpan</h1>
-        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-            No más dudas sobre tu cadena o pastillas de freno. Sincroniza con <strong>Strava</strong> y controla la vida útil de cada componente en tiempo real.
-        </p>
-        <button class="mt-8 bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition shadow-lg">
-            Conectar con Strava
+    <nav class="py-6 px-8 flex justify-between items-center border-b border-white/10 sticky top-0 bg-carbon/80 backdrop-blur-md z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-rosa rounded-full flex items-center justify-center">
+                <span class="font-archivo font-black text-xs italic">VS</span>
+            </div>
+            <span class="font-archivo font-black text-2xl tracking-tighter uppercase">VeloSpan</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-gray-400">
+            <a href="#solucion" class="hover:text-cian transition">Solución</a>
+            <a href="#tecnologia" class="hover:text-cian transition">Tecnología</a>
+            <a href="#proceso" class="hover:text-cian transition">Proceso</a>
+        </div>
+        <button class="bg-white text-carbon px-5 py-2 rounded-full font-bold text-sm hover:bg-cian transition">
+            EMPEZAR
         </button>
+    </nav>
+
+    <header class="relative pt-24 pb-32 px-6 overflow-hidden">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1 border border-rosa text-rosa rounded-full text-xs font-bold mb-6 tracking-widest uppercase">
+                Mantenimiento Predictivo Digital
+            </span>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight italic uppercase italic">
+                Domina la vida útil de <br> <span class="text-gradient font-black">tu bicicleta</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                Transformamos tus datos digitales en información accionable. Olvida la subjetividad y los ruidos extraños: deja que algoritmos precisos gestionen cada componente de tu flota automáticamente.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="bg-rosa hover:scale-105 transition-all text-white font-black py-4 px-10 rounded-lg text-lg shadow-xl shadow-rosa/20 italic uppercase">
+                    Conectar Strava
+                </button>
+                <button class="border border-white/20 hover:bg-white/5 transition-all text-white font-black py-4 px-10 rounded-lg text-lg italic uppercase">
+                    Ver Demo
+                </button>
+            </div>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cian/10 blur-[120px] rounded-full -z-10"></div>
     </header>
 
-    <section class="py-16 px-6 max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-            <h3 class="text-xl font-bold mb-2 text-blue-400">Sincronización Total</h3>
-            <p class="text-slate-400">Importamos tus actividades de Strava automáticamente para descontar kilómetros de tus piezas.</p>
-        </div>
-        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-            <h3 class="text-xl font-bold mb-2 text-blue-400">Alertas de Desgaste</h3>
-            <p class="text-slate-400">Recibe notificaciones antes de que ese "ruidito" se convierta en una avería costosa.</p>
-        </div>
-        <div class="bg-slate-800 p-6 rounded-xl border border-slate-700">
-            <h3 class="text-xl font-bold mb-2 text-blue-400">Historial por Componente</h3>
-            <p class="text-slate-400">Lleva un registro detallado de cada tornillo, rodamiento y cubierta de tu flota.</p>
+    <section id="solucion" class="py-24 px-6 bg-white/5">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl font-black mb-6 uppercase">¿Entrenamiento grabado, mantenimiento adivinado?</h2>
+                <p class="text-gray-400 text-lg mb-6">
+                    Si monitorizas tus vatios y pulsaciones con precisión milimétrica, ¿por qué sigues confiando en una "mirada dubitativa" para saber si tu cadena aguanta?
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-rojo font-bold">✕</span>
+                        <span>Se acabó el riesgo de roturas en mitad de una ruta.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-rojo font-bold">✕</span>
+                        <span>Adiós al esfuerzo de registrar kilómetros manualmente.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-verde font-bold">✓</span>
+                        <span class="text-cian font-medium font-archivo uppercase">VeloSpan automatiza el puente entre tus datos y tu taller.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-carbon border border-white/10 p-8 rounded-2xl shadow-2xl relative">
+                <div class="absolute -top-4 -right-4 bg-verde text-carbon px-4 py-2 rounded-lg font-black font-mono text-sm">
+                    ESTADO: ÓPTIMO
+                </div>
+                <h3 class="text-rosa text-xs font-black tracking-widest uppercase mb-4">Métricas en tiempo real</h3>
+                <div class="space-y-6 font-roboto">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="font-bold font-archivo uppercase italic">Cadena Ultegra 12v</span>
+                            <span class="font-mono text-verde">1.240 / 3.000 KM</span>
+                        </div>
+                        <div class="w-full bg-white/10 h-3 rounded-full overflow-hidden">
+                            <div class="bg-verde h-full" style="width: 41%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2 text-naranja">
+                            <span class="font-bold font-archivo uppercase italic">Pastillas Freno (Del.)</span>
+                            <span class="font-mono">82% USADO</span>
+                        </div>
+                        <div class="w-full bg-white/10 h-3 rounded-full overflow-hidden">
+                            <div class="bg-naranja h-full" style="width: 82%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-slate-500 border-t border-slate-800">
-        <p>&copy; 2026 VeloSpan - Keep Riding, Stay Tuned.</p>
+    <section class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black mb-4 uppercase">Gestión Granular e Inteligente</h2>
+            <p class="text-gray-400">Un sistema integral diseñado para el ciclista moderno.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 border border-white/5 hover:border-cian/30 transition-all rounded-3xl bg-white/[0.02]">
+                <div class="w-12 h-12 bg-cian/20 text-cian flex items-center justify-center rounded-xl mb-6 text-2xl font-black">
+                    S
+                </div>
+                <h3 class="text-xl font-bold mb-4 font-archivo uppercase italic leading-none">Sincronización Automatizada</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Vinculación transparente con Strava para capturar cada kilómetro real sin intervención manual.</p>
+            </div>
+            <div class="p-8 border border-white/5 hover:border-rosa/30 transition-all rounded-3xl bg-white/[0.02]">
+                <div class="w-12 h-12 bg-rosa/20 text-rosa flex items-center justify-center rounded-xl mb-6 text-2xl font-black">
+                    A
+                </div>
+                <h3 class="text-xl font-bold mb-4 font-archivo uppercase italic leading-none">Alertas Proactivas</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Recibe notificaciones en tu móvil antes de superar el umbral de seguridad de tus piezas.</p>
+            </div>
+            <div class="p-8 border border-white/5 hover:border-white/20 transition-all rounded-3xl bg-white/[0.02]">
+                <div class="w-12 h-12 bg-white/10 text-white flex items-center justify-center rounded-xl mb-6 text-2xl font-black">
+                    M
+                </div>
+                <h3 class="text-xl font-bold mb-4 font-archivo uppercase italic leading-none">Modelado Granular</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Gestiona de forma independiente la vida útil de cada rodamiento, cable o tornillo de tu bicicleta.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tecnologia" class="py-24 px-6 border-t border-white/10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-xs font-black tracking-[0.3em] text-gray-500 uppercase mb-8 italic">Infraestructura Asíncrona de Alta Disponibilidad</h3>
+            <div class="flex flex-wrap justify-center gap-x-12 gap-y-6 opacity-40 grayscale">
+                <span class="font-archivo text-xl font-black tracking-tighter">FastAPI</span>
+                <span class="font-archivo text-xl font-black tracking-tighter uppercase">PostgreSQL</span>
+                <span class="font-archivo text-xl font-black tracking-tighter uppercase">Redis</span>
+                <span class="font-archivo text-xl font-black tracking-tighter uppercase">Celery</span>
+                <span class="font-archivo text-xl font-black tracking-tighter uppercase italic">Flutter</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 px-8 border-t border-white/10 text-center">
+        <div class="flex flex-col items-center gap-6">
+            <div class="flex items-center gap-2">
+                <span class="font-archivo font-black text-2xl tracking-tighter uppercase">VeloSpan</span>
+            </div>
+            <p class="text-gray-600 text-xs tracking-widest uppercase">
+                &copy; 2026 Fernando Carmona Palacio — Universidad de Valladolid (Escuela de Ingeniería Informática)
+            </p>
+        </div>
     </footer>
 
 </body>
