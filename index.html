@@ -3,40 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloSpan | Component Lifecycle Manager</title>
+    <title>VeloSpan</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;900&family=Roboto:wght@300;400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        carbon: '#121212',
-                        rosa: '#E73F90',
-                        cian: '#00B7EE',
+                        carbon: '#121212', //
+                        rosa: '#E73F90',   //
+                        cian: '#00B7EE',   //
                         verde: '#2ECC71',
                         naranja: '#F39C12',
                         rojo: '#E74C3C',
-                    },
-                    fontFamily: {
-                        archivo: ['Archivo', 'sans-serif'],
-                        roboto: ['Roboto', 'sans-serif'],
-                        mono: ['Roboto Mono', 'monospace'],
                     }
                 }
             }
         }
     </script>
+
     <style>
-        body { background-color: #121212; font-family: 'Roboto', sans-serif; color: white; }
-        h1, h2, h3 { font-family: 'Archivo', sans-serif; text-transform: uppercase; font-style: italic; }
+        /* Estilos base */
+        body { 
+            background-color: #121212; 
+            font-family: 'Roboto', sans-serif; 
+            color: white; 
+        }
+        
+        h1, h2, h3 { 
+            font-family: 'Archivo', sans-serif; 
+            text-transform: uppercase; 
+            font-style: italic; 
+        }
+
         .text-gradient {
             background: linear-gradient(90deg, #E73F90, #00B7EE);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .bg-gradient-soft {
-            background: radial-gradient(circle at center, rgba(231, 63, 144, 0.05) 0%, rgba(18, 18, 18, 0) 70%);
+
+        /* --- BOTÓN STRAVA CON TRANSICIÓN LENTA --- */
+        .btn-strava-custom {
+            position: relative;
+            background-color: #E73F90; /* Color inicial sólido (Rosa) */
+            color: white;
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-strava-custom::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(110deg, #00B7EE 0%, #E73F90 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .btn-strava-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 183, 238, 0.3);
+        }
+
+        .btn-strava-custom:hover::before {
+            opacity: 1;
         }
     </style>
 </head>
@@ -44,90 +85,74 @@
 
     <nav class="py-4 px-8 flex justify-between items-center border-b border-white/5 sticky top-0 bg-carbon/90 backdrop-blur-xl z-50">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-rosa to-cian rounded-xl flex items-center justify-center rotate-3">
-                <span class="font-archivo font-black text-lg text-white">VS</span>
-            </div>
-            <div class="flex flex-col">
-                <span class="font-archivo font-black text-xl tracking-tighter leading-none">VeloSpan</span>
-                <span class="text-[10px] text-gray-500 font-mono tracking-widest uppercase">Component Lifecycle Manager</span>
-            </div>
+            <img src="/images/logotipo_oscuro.png" alt="Logotipo VeloSpan" class="w-auto h-14 rounded-full">
         </div>
-        <div class="hidden lg:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
-            <a href="#problema" class="hover:text-rosa transition">El Problema</a>
-            <a href="#solucion" class="hover:text-cian transition">La Solución</a>
-            <a href="#tecnologia" class="hover:text-white transition">Arquitectura</a>
-            <a href="#estudio" class="hover:text-verde transition">Validación</a>
-        </div>
-        <button class="bg-white text-carbon px-6 py-2.5 rounded-full font-black text-xs hover:bg-cian transition-all active:scale-95">
-            CONECTAR STRAVA
-        </button>
+        <a href="www.linkedin.com/in/fernando-carmona-palacio" class="btn-strava-custom px-6 py-2.5 rounded-full font-black text-xs tracking-widest uppercase italic">
+            CONTACTO
+        </a>
     </nav>
 
-    <header class="relative pt-32 pb-40 px-6 overflow-hidden bg-gradient-soft">
+    <header class="relative pt-32 pb-40 px-6 overflow-hidden">
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <div class="flex justify-center mb-8">
-                <span class="inline-block px-4 py-1.5 border border-rosa/30 bg-rosa/5 text-rosa rounded-full text-[10px] font-black tracking-[0.3em] uppercase">
-                    Mantenimiento Predictivo Digital
-                </span>
-            </div>
-            <h1 class="text-6xl md:text-[100px] font-black mb-10 leading-[0.9] tracking-tighter italic">
-                KILÓMETROS DIGITALES<br> 
-                <span class="text-gradient font-black">MANTENIMIENTO REAL</span>
+            <span class="inline-block px-4 py-1.5 border border-rosa/30 bg-rosa/5 text-rosa rounded-full text-[10px] font-black tracking-[0.3em] uppercase mb-8">
+                Mantenimiento Predictivo Digital
+            </span>
+            <h1 class="text-6xl md:text-[90px] font-black mb-10 leading-[0.9] tracking-tighter italic">
+                DOMINA LA VIDA ÚTIL<br> 
+                <span class="text-gradient font-black">DE TU BICICLETA</span>
             </h1>
             <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-14 font-light leading-relaxed">
-                Transformamos la telemetría de tus entrenamientos en una gestión proactiva de tu seguridad. VeloSpan es el puente automatizado entre tus datos en la nube y el taller.
+                Transformamos tus kilómetros digitales en una gestión proactiva de tu seguridad. Automatización total basada en telemetría real para el ciclista moderno.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="#solucion" class="bg-rosa hover:bg-rosa/80 hover:shadow-lg hover:shadow-rosa/20 transition-all text-white font-black py-5 px-12 rounded-xl text-sm uppercase tracking-widest italic">
-                    Empezar Ahora
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-20">
+                <button class="bg-rosa hover:scale-105 transition-all text-white font-black py-5 px-12 rounded-xl text-sm uppercase tracking-widest italic shadow-xl shadow-rosa/20">
+                    Probar la App
+                </button>
+                <a href="#" class="border border-white/10 hover:bg-white/5 transition-all text-white font-black py-5 px-12 rounded-xl text-sm uppercase tracking-widest italic">
+                    Ver Prototipo
                 </a>
-                <a href="#estudio" class="border border-white/10 hover:bg-white/5 transition-all text-white font-black py-5 px-12 rounded-xl text-sm uppercase tracking-widest italic">
-                    Ver Estudio de Usuario
-                </a>
+            </div>
+
+            <div class="max-w-4xl mx-auto rounded-3xl border border-white/10 p-4 bg-white/5 backdrop-blur shadow-2xl">
+                <div class="bg-carbon rounded-2xl aspect-video flex items-center justify-center text-gray-700 italic border border-white/5">
+                    [Insertar Imagen: Prototipo_Mi_Garaje.png]
+                </div>
             </div>
         </div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rosa/5 blur-[150px] rounded-full -z-10"></div>
     </header>
 
-    <section id="problema" class="py-32 px-6 border-y border-white/5 bg-white/[0.01]">
-        <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div class="order-2 lg:order-1 font-mono">
-                    <div class="bg-carbon border border-white/5 p-8 rounded-3xl space-y-8 shadow-2xl">
-                        <div class="flex justify-between border-b border-white/5 pb-4">
-                            <span class="text-gray-500 text-xs">MÉTRICAS DEL SECTOR CICLISTA</span>
-                            <span class="text-rosa text-xs font-bold uppercase">Fuente: TFG 2026</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-8">
-                            <div>
-                                <div class="text-4xl font-black text-rosa mb-1">82.8%</div>
-                                <p class="text-[10px] text-gray-500 uppercase leading-tight">Ciclistas que desconocen el kilometraje real de sus piezas</p>
-                            </div>
-                            <div>
-                                <div class="text-4xl font-black text-naranja mb-1">51.7%</div>
-                                <p class="text-[10px] text-gray-500 uppercase leading-tight">Usuarios que sufren daños colaterales por descuido</p>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 rounded-full bg-rojo"></div>
-                                <p class="text-xs text-gray-400">La inspección visual subjetiva compromete la seguridad vial.</p>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 rounded-full bg-rojo"></div>
-                                <p class="text-xs text-gray-400">El registro manual en hojas de cálculo consume tiempo y se abandona pronto.</p>
-                            </div>
-                        </div>
+    <section id="estudio" class="py-32 px-6 border-y border-white/5 bg-white/[0.01]">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="text-4xl font-black mb-8 italic">Validación con datos reales</h2>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed font-light italic">
+                    Nuestro estudio realizado a ciclistas multidisciplinares reveló una brecha crítica en el mantenimiento actual.
+                </p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 group">
+                        <div class="text-4xl font-archivo font-black text-rosa w-24">82.8%</div>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest leading-tight">Desconoce el kilometraje exacto de sus componentes</p>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="text-4xl font-archivo font-black text-cian w-24">79.3%</div>
+                        <p class="text-sm text-gray-500 uppercase tracking-widest leading-tight">Depende exclusivamente de la inspección visual</p>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="text-4xl font-black mb-8 italic">¿Por qué seguimos adivinando?</h2>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed italic font-light">
-                        Monitorizamos vatios, pulsaciones y desnivel con precisión milimétrica, pero ante la pregunta <span class="text-white font-medium">"¿cuánta vida le queda a tu cadena?"</span>, la mayoría responde con una mirada dubitativa.
-                    </p>
-                    <p class="text-gray-400 leading-relaxed italic font-light">
-                        VeloSpan nace para eliminar la incertidumbre. Según nuestro estudio, la mayoría de los ciclistas confía exclusivamente en ruidos extraños o roturas in situ para decidir pasar por el taller. Es hora de pasar de lo reactivo a lo preventivo.
-                    </p>
+            </div>
+            <div class="bg-carbon border border-white/10 p-10 rounded-[40px] shadow-2xl font-mono text-xs">
+                <div class="flex justify-between mb-8 border-b border-white/5 pb-4">
+                    <span class="text-gray-500">FRECUENCIA DE SEGUIMIENTO</span>
+                    <span class="text-rosa">MUESTRA: N=29</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex justify-between"><span>Cadenas</span> <span class="text-verde">86.2%</span></div>
+                    <div class="w-full bg-white/5 h-1.5 rounded-full"><div class="bg-verde h-full" style="width: 86.2%"></div></div>
+                    <div class="flex justify-between"><span>Transmisión</span> <span class="text-verde">79.3%</span></div>
+                    <div class="w-full bg-white/5 h-1.5 rounded-full"><div class="bg-verde h-full" style="width: 79.3%"></div></div>
+                    <div class="flex justify-between"><span>Frenado</span> <span class="text-verde">79.3%</span></div>
+                    <div class="w-full bg-white/5 h-1.5 rounded-full"><div class="bg-verde h-full" style="width: 79.3%"></div></div>
                 </div>
             </div>
         </div>
@@ -135,137 +160,64 @@
 
     <section id="solucion" class="py-32 px-6">
         <div class="max-w-6xl mx-auto text-center mb-24">
-            <h2 class="text-5xl font-black mb-6 italic">Un sistema <span class="text-gradient">Granular</span></h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Velo (Ciclismo) + Span (Ciclo de Vida). Diseñado para gestionar la duración temporal y el uso físico de cada componente individual.</p>
+            <h2 class="text-5xl font-black mb-6 italic">Concepto <span class="text-gradient">VeloSpan</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Velo (Ciclismo) + Span (Ciclo de Vida). Diseñado para gestionar la duración temporal y el uso físico de cada componente individual.</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="p-10 border border-white/5 bg-white/[0.02] rounded-[40px] hover:border-cian/20 transition-all group">
-                <div class="w-14 h-14 bg-cian/10 text-cian flex items-center justify-center rounded-2xl mb-8 text-2xl font-black group-hover:scale-110 transition-transform italic">
-                    01
-                </div>
-                <h3 class="text-xl font-black mb-6 italic tracking-tight">Sincronización Transparente</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-light">Utilizamos webhooks de Strava para recibir tus actividades en tiempo real. Sin intervención manual, sin errores de entrada.</p>
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div class="w-20 h-20 bg-rosa/10 rounded-2xl mx-auto mb-8 flex items-center justify-center text-3xl">⚙️</div>
+                <h3 class="text-xl font-black mb-4 italic">Sincronización</h3>
+                <p class="text-gray-400 text-sm font-light">Webhooks de Strava para capturar cada salida sin intervención manual.</p>
             </div>
-            
-            <div class="p-10 border border-white/5 bg-white/[0.02] rounded-[40px] hover:border-rosa/20 transition-all group">
-                <div class="w-14 h-14 bg-rosa/10 text-rosa flex items-center justify-center rounded-2xl mb-8 text-2xl font-black group-hover:scale-110 transition-transform italic">
-                    02
-                </div>
-                <h3 class="text-xl font-black mb-6 italic tracking-tight">Modelado Granular</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-light">Controla desde neumáticos y cadenas hasta el líquido tubeless o las horas de revisión de tu horquilla. Cada activo con su propio umbral.</p>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-cian/10 rounded-2xl mx-auto mb-8 flex items-center justify-center text-3xl">📊</div>
+                <h3 class="text-xl font-black mb-4 italic">Granularidad</h3>
+                <p class="text-gray-400 text-sm font-light">Desde la cadena hasta el líquido tubeless. Modelado individual de activos.</p>
             </div>
-
-            <div class="p-10 border border-white/5 bg-white/[0.02] rounded-[40px] hover:border-verde/20 transition-all group">
-                <div class="w-14 h-14 bg-verde/10 text-verde flex items-center justify-center rounded-2xl mb-8 text-2xl font-black group-hover:scale-110 transition-transform italic">
-                    03
-                </div>
-                <h3 class="text-xl font-black mb-6 italic tracking-tight">Semáforo de Desgaste</h3>
-                <p class="text-gray-400 text-sm leading-relaxed font-light">Visualización instantánea basada en el código de colores universal: Verde (Óptimo), Naranja (Preventivo) y Rojo (Crítico).</p>
+            <div class="text-center">
+                <div class="w-20 h-20 bg-verde/10 rounded-2xl mx-auto mb-8 flex items-center justify-center text-3xl">🔔</div>
+                <h3 class="text-xl font-black mb-4 italic">Alertas</h3>
+                <p class="text-gray-400 text-sm font-light">Notificaciones preventivas antes de superar el límite de seguridad.</p>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-gradient-to-b from-transparent to-white/[0.02]">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+    <section id="tecnologia" class="py-32 px-6 bg-white/[0.02] border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black italic mb-4">Arquitectura Asíncrona</h2>
+                <p class="text-gray-500 font-mono text-[11px] tracking-widest uppercase">Escalabilidad de alta disponibilidad</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-40 grayscale group hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+                <span class="font-archivo text-xl font-black text-center italic">FastAPI</span>
+                <span class="font-archivo text-xl font-black text-center italic uppercase">Postgres</span>
+                <span class="font-archivo text-xl font-black text-center italic uppercase">Redis</span>
+                <span class="font-archivo text-xl font-black text-center italic uppercase">Celery</span>
+                <span class="font-archivo text-xl font-black text-center italic uppercase">Flutter</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 px-8 border-t border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
             <div>
-                <h2 class="text-4xl font-black mb-6 italic">Tu flota bajo control</h2>
-                <p class="text-gray-400 mb-10 leading-relaxed font-light italic">
-                    VeloSpan permite segmentar el uso y los umbrales de vida útil de forma independiente para cada vehículo. Perfecto para ciclistas multidisciplinares que gestionan flotas de carretera, montaña y gravel.
-                </p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4 group">
-                        <div class="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full group-hover:bg-rosa group-hover:text-white transition-all text-gray-500 font-bold italic">1</div>
-                        <span class="text-sm font-bold uppercase tracking-widest">Configura tu Bicicleta</span>
-                    </div>
-                    <div class="flex items-center gap-4 group">
-                        <div class="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full group-hover:bg-cian group-hover:text-white transition-all text-gray-500 font-bold italic">2</div>
-                        <span class="text-sm font-bold uppercase tracking-widest">Define Umbrales Críticos</span>
-                    </div>
-                    <div class="flex items-center gap-4 group">
-                        <div class="w-10 h-10 border border-white/10 flex items-center justify-center rounded-full group-hover:bg-verde group-hover:text-white transition-all text-gray-500 font-bold italic">3</div>
-                        <span class="text-sm font-bold uppercase tracking-widest">Recibe Alertas Proactivas</span>
-                    </div>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="font-archivo font-black text-2xl tracking-tighter italic uppercase">VeloSpan</span>
                 </div>
-            </div>
-            <div class="bg-carbon border border-white/10 p-10 rounded-[50px] shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-rosa/10 blur-3xl rounded-full"></div>
-                <div class="flex justify-between items-end mb-10">
-                    <div>
-                        <h4 class="font-archivo text-2xl font-black italic">ORBEA ORCA M30</h4>
-                        <span class="text-gray-500 text-[10px] uppercase font-mono tracking-widest">Flota: Carretera</span>
-                    </div>
-                    <span class="text-naranja font-black font-mono text-xs italic uppercase">Revisión Pendiente</span>
-                </div>
-                <div class="space-y-10">
-                    <div class="font-mono">
-                        <div class="flex justify-between text-xs mb-3">
-                            <span class="text-gray-400 uppercase">Cadena Shimano HG-701</span>
-                            <span class="text-white">2.850 / 3.000 KM</span>
-                        </div>
-                        <div class="w-full bg-white/5 h-2 rounded-full">
-                            <div class="bg-rojo h-full shadow-[0_0_15px_rgba(231,76,60,0.5)]" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="font-mono">
-                        <div class="flex justify-between text-xs mb-3">
-                            <span class="text-gray-400 uppercase">Cubierta Continental GP5000</span>
-                            <span class="text-white">1.200 / 5.000 KM</span>
-                        </div>
-                        <div class="w-full bg-white/5 h-2 rounded-full">
-                            <div class="bg-verde h-full shadow-[0_0_15px_rgba(46,204,113,0.5)]" style="width: 24%"></div>
-                        </div>
-                    </div>
-                    <div class="font-mono">
-                        <div class="flex justify-between text-xs mb-3 text-naranja">
-                            <span class="uppercase">Líquido Tubeless (Vencimiento)</span>
-                            <span>82% Tiempo</span>
-                        </div>
-                        <div class="w-full bg-white/5 h-2 rounded-full">
-                            <div class="bg-naranja h-full shadow-[0_0_15px_rgba(243,156,18,0.5)]" style="width: 82%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tecnologia" class="py-32 px-6 border-t border-white/5">
-        <div class="max-w-6xl mx-auto text-center">
-            <h3 class="text-[10px] font-black tracking-[0.4em] text-gray-500 uppercase mb-16 italic">Arquitectura de Alta Disponibilidad</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 items-center opacity-30">
-                <span class="font-archivo text-2xl font-black">FASTAPI</span>
-                <span class="font-archivo text-2xl font-black">POSTGRESQL</span>
-                <span class="font-archivo text-2xl font-black uppercase">Redis + Celery</span>
-                <span class="font-archivo text-2xl font-black uppercase italic tracking-tighter">Flutter</span>
-            </div>
-            <div class="mt-20 max-w-2xl mx-auto">
-                <p class="text-xs text-gray-500 leading-relaxed uppercase tracking-widest font-mono">
-                    Diseñado con arquitectura limpia (Clean Architecture) para separar la lógica de negocio de las dependencias externas. Procesamiento asíncrono basado en colas para gestionar picos de sincronización sin latencia.
+                <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em] leading-relaxed">
+                    Trabajo de Fin de Grado<br>
+                    Autor: Fernando Carmona Palacio<br>
+                    Tutor: Alejandra Martínez Monés<br>
+                    Escuela de Ingeniería Informática — UVa
                 </p>
             </div>
-        </div>
-    </section>
-
-    <footer class="py-20 px-8 border-t border-white/5 bg-black">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 text-center md:text-left">
-            <div>
-                <div class="flex items-center gap-3 justify-center md:justify-start mb-4">
-                    <span class="font-archivo font-black text-2xl tracking-tighter italic">VeloSpan</span>
+            <div class="flex flex-col items-end gap-4">
+                <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
+                    <a href="#" class="text-gray-500 hover:text-white transition">LinkedIn</a>
+                    <a href="" class="text-gray-500 hover:text-white transition">GitHub</a>
                 </div>
-                <p class="text-gray-600 text-[10px] uppercase tracking-[0.2em]">
-                    Trabajo de Fin de Grado — 2026<br>
-                    Fernando Carmona Palacio<br>
-                    Escuela de Ingeniería Informática (UVa)
-                </p>
-            </div>
-            <div class="flex gap-8">
-                <a href="#" class="text-gray-500 hover:text-white transition uppercase text-[10px] font-bold tracking-widest">Documentación</a>
-                <a href="#" class="text-gray-500 hover:text-white transition uppercase text-[10px] font-bold tracking-widest">GitHub</a>
-                <a href="#" class="text-gray-500 hover:text-white transition uppercase text-[10px] font-bold tracking-widest">Privacidad</a>
-            </div>
-            <div class="text-[10px] text-gray-700 font-mono">
-                BUILD_2026_01_BETA
+                <span class="text-gray-800 font-mono text-[10px]">VALLADOLID_2026_BUILD_BETA</span>
             </div>
         </div>
     </footer>
