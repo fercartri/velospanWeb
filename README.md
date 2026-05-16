@@ -1,6 +1,6 @@
 # VeloSpan — Landing Page Web
 
-[![Web Status](https://img.shields.io/website?url=https%3A%2F%2Fvelospan.app)](https://velospan.vercel.app/)
+[![Web Status](https://img.shields.io/website?url=https%3A%2F%2Fvelospan.vercel.app)](https://velospan.vercel.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-magenta.svg)](https://opensource.org/licenses/MIT)
 [![Stack](https://img.shields.io/badge/Stack-HTML5%20%7C%20TailwindCSS%20%7C%20JS-00B7EE.svg)]()
 
