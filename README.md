@@ -1,52 +1,42 @@
-# VeloSpan | Component Lifecycle Manager
+# VeloSpan — Landing Page Web
 
-> **Kilómetros digitales, mantenimiento real**
+[![Web Status](https://img.shields.io/website?url=https%3A%2F%2Fvelospan.app)](https://velospan.vercel.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-magenta.svg)](https://opensource.org/licenses/MIT)
+[![Stack](https://img.shields.io/badge/Stack-HTML5%20%7C%20TailwindCSS%20%7C%20JS-00B7EE.svg)]()
 
-VeloSpan es un sistema integral de gestión de activos ciclistas diseñado para automatizar el seguimiento del ciclo de vida de los componentes mecánicos mediante la telemetría de tus entrenamientos.
-
-🔗 **Accede a la web del proyecto:** [velospan.app](https://velospan.vercel.app/)
-
----
-
-## 📋 Contexto y Motivación
-
-En la última década, el ciclismo deportivo ha vivido una transformación digital profunda. Hoy en día, impera la "cultura del dato": todo entrenamiento que no se graba y se sube a la nube, no existe. Sin embargo, a pesar de monitorizar vatios y pulsaciones con precisión milimétrica, el mantenimiento mecánico sigue siendo subjetivo.
-
-### El Problema
-Según el estudio realizado durante este proyecto a 29 ciclistas reales:
-* **82.8%** reconoce desconocer el kilometraje exacto de sus componentes.
-* **79.3%** depende exclusivamente de la inspección visual subjetiva o de la aparición de ruidos extraños.
-* Esta falta de control proactivo compromete la eficiencia mecánica y la **seguridad vial** del ciclista.
-
-### La Propuesta: VeloSpan
-VeloSpan nace como el puente necesario entre los datos de rendimiento deportivo y el mantenimiento preventivo. El nombre deriva de *Velo* (ciclismo) y *Span* (ciclo de vida), simbolizando el dominio total sobre la durabilidad del material.
+Este repositorio contiene el código fuente de la **landing page oficial** de **VeloSpan**. Este sitio web ha sido diseñado con un enfoque comercial y de producto para la captación de usuarios, actuando además como la plataforma pública requerida para la auditoría y validación del flujo de producción ante la API de Strava.
 
 ---
 
-## ✨ Funcionalidades Principales
+## 🚀 El Proyecto Global: ¿Qué es VeloSpan?
 
-* **Sincronización Automatizada:** Conexión transparente con la **API de Strava** mediante Webhooks para capturar cada kilómetro real sin intervención manual.
-* **Modelado Granular de Activos:** Permite configurar un "Garaje Digital" con múltiples bicicletas y desglosar cada una en componentes individuales como cadena, cubiertas o líquido tubeless.
-* **Semáforo de Desgaste:** Sistema visual basado en códigos de colores universales (Verde, Naranja, Rojo) para identificar estados críticos en menos de 3 segundos.
-* **Alertas Predictivas:** Notificaciones proactivas cuando un activo alcanza el umbral de seguridad definido por el usuario.
+**VeloSpan** (del latín *Velo*, ciclismo; y del anglosajón *Span*, ciclo de vida) es un ecosistema integral de mantenimiento preventivo digital para ciclistas.
 
----
+El sistema resuelve un problema crítico detectado mediante ingeniería de requisitos en una muestra real de ciclistas ($N=29$), donde el **82.8%** admitió desconocer el kilometraje exacto de su material y un **79.3%** dependía únicamente de evaluaciones visuales subjetivas. 
 
-## 🛠️ Stack Tecnológico
+VeloSpan automatiza este proceso transformando los kilómetros digitales de las actividades deportivas en alertas proactivas sobre la salud del equipamiento.
 
-El sistema utiliza una arquitectura **Clean Architecture** cliente-servidor desacoplada para garantizar modularidad y alta disponibilidad.
+### 💻 Repositorio del Proyecto Principal
+La lógica de negocio pesada, la automatización y las aplicaciones nativas no se encuentran en este repositorio. Puedes auditar la arquitectura de software del sistema completo aquí:
+🔗 **[Ir al repositorio de la Aplicación y Backend de VeloSpan](https://github.com/fercartri/velospanLatex)**
 
-* **Frontend:** [Flutter](https://flutter.dev/) para una experiencia nativa fluida en iOS y Android.
-* **Backend:** [FastAPI](https://fastapi.tiangolo.com/) (Python) de alto rendimiento para la lógica de negocio.
-* **Procesamiento Asíncrono:** Uso de [Redis](https://redis.io/) y [Celery](https://docs.celeryq.dev/) para gestionar la ingesta masiva de datos sin bloquear el sistema.
-* **Persistencia:** [PostgreSQL](https://www.postgresql.org/) con SQLAlchemy para garantizar la integridad referencial.
-* **Infraestructura:** Contenerización con [Docker](https://www.docker.com/) y despliegue automatizado en [Railway](https://railway.app/).
+El núcleo global del sistema está compuesto por:
+* **Backend:** API asíncrona construida con **FastAPI**, **Redis** y colas de tareas con **Celery**.
+* **Frontend:** Aplicación móvil multiplataforma desarrollada en **Flutter** utilizando el patrón de diseño BLoC para la gestión de estados.
+* **Persistencia:** Base de datos relacional sobre **PostgreSQL** administrada mediante el ORM SQLAlchemy.
 
 ---
 
-## 👤 Autor
+## 🌐 Este Repositorio: Módulo Web de Captación
 
-**Fernando Carmona Palacio**
-* Trabajo de Fin de Grado - 2026.
-* Escuela de Ingeniería Informática - Universidad de Valladolid.
-* Tutor: Alejandra Martínez Monés.
+Este proyecto web estático implementa la capa de presentación pública del producto. Se centra en la conversión de clientes a través de un diseño de interfaz de alta fidelidad alineado con el manual de identidad corporativa de la marca.
+
+---
+
+## 🛠️ Instalación y Uso Local
+
+Al tratarse de un desarrollo web estático, no requiere de compilación ni de un servidor de aplicaciones pesado:
+
+1. Clona este repositorio:
+   ```bash
+   git clone [https://github.com/fercartri/velospanweb.git](https://github.com/fercartri/velospanweb.git)
